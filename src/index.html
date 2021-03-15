@@ -295,7 +295,8 @@
         identifier="date6"
         min="1990-06-10"
         max="2020-07-18"
-        dates-to-disable="2020-06-20,2020-06-21"
+        dates-to-disable="2020-06-20"
+        month-always-on="true"
         value="2020-06-16"
       ></duet-date-picker>
       <pre><code class="html">&lt;label for="date"&gt;Choose a date&lt;/label&gt;
@@ -524,6 +525,24 @@
     alert("Submitted")
   })
 &lt;/script&gt;</code></pre>
+
+      <h2>Always On</h2>
+      <label for="date10"
+        >It prevents users to close the day selector window. I.e. it's visible even after you select a date and click on
+        it. Choose a date to test</label
+      >
+      <duet-date-picker
+        identifier="date10"
+        min="1990-06-10"
+        max="2020-07-18"
+        dates-to-disable="2020-06-20"
+        month-always-on="true"
+        value="2020-06-16"
+      ></duet-date-picker>
+      <pre><code class="html">&lt;label for="date"&gt;Choose a date&lt;/label&gt;
+&lt;duet-date-picker identifier="date" min="1990-06-10"
+  max="2020-07-18" value="2020-06-16" month-always-on="true"&gt;
+&lt;/duet-date-picker&gt;</code></pre>
       <br />
       <p>
         © 2020 LocalTapiola Services Ltd /

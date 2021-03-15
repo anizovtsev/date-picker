@@ -138,6 +138,13 @@ export class DuetDatePicker implements ComponentInterface {
   @Prop({ reflect: true }) disabled: boolean = false
 
   /**
+   * It prevents users to close the day selector window. I.e. it's visible even after you select a date and click on it.
+   * Even if the property is true, month selector is hidden by deafult. You need to show it first by calling the show() method (or wait for other events).
+   * After it appers, it will be visible until you close it programatically.
+   */
+  @Prop() monthAlwaysOn: boolean = false
+
+  /**
    * Defines a specific role attribute for the date picker input.
    */
   @Prop() role: string
@@ -290,15 +297,17 @@ export class DuetDatePicker implements ComponentInterface {
    * returning to the date picker's button. Default is true.
    */
   @Method() async hide(moveFocusToButton = true) {
-    this.open = false
+    if (!this.monthAlwaysOn) {
+      this.open = false
 
-    // in cases where calendar is quickly shown and hidden
-    // we should avoid moving focus to the button
-    clearTimeout(this.focusTimeoutId)
+      // in cases where calendar is quickly shown and hidden
+      // we should avoid moving focus to the button
+      clearTimeout(this.focusTimeoutId)
 
-    if (moveFocusToButton) {
-      // iOS VoiceOver needs to wait for all transitions to finish.
-      setTimeout(() => this.datePickerButton.focus(), TRANSITION_MS + 200)
+      if (moveFocusToButton) {
+        // iOS VoiceOver needs to wait for all transitions to finish.
+        setTimeout(() => this.datePickerButton.focus(), TRANSITION_MS + 200)
+      }
     }
   }
 
