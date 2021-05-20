@@ -143,6 +143,11 @@ export class DuetDatePicker implements ComponentInterface {
   @Prop() role: string
 
   /**
+   * Defines a specific areal label attribute for the date picker input.
+   */
+  @Prop() ariaLabel: string
+
+  /**
    * Forces the opening direction of the calendar modal to be always left or right.
    * This setting can be useful when the input is smaller than the opening date picker
    * would be as by default the picker always opens towards right.
@@ -565,6 +570,7 @@ export class DuetDatePicker implements ComponentInterface {
             name={this.name}
             disabled={this.disabled}
             role={this.role}
+            ariaLabel={this.ariaLabel}
             required={this.required}
             identifier={this.identifier}
             localization={this.localization}
